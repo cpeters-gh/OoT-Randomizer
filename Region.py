@@ -84,7 +84,7 @@ class Region(object):
             is_overworld_restricted = self.world.shuffle_ganon_bosskey == 'overworld'
 
         if is_self_dungeon_restricted and not manual:
-            return self.dungeon and self.dungeon.is_dungeon_item(item) and item.world.id == self.world.id
+            return self.dungeon and self.dungeon.is_dungeon_item(item)# and item.world.id == self.world.id
 
         if is_dungeon_restricted and not manual:
             return self.dungeon

@@ -153,7 +153,10 @@ def distribute_items_restrictive(window, worlds, fill_locations=None):
     # the song locations only.
     if worlds[0].shuffle_song_items != 'any':
         logger.info('Placing song items.')
-        fill_ownworld_restrictive(window, worlds, search, song_locations, songitempool, progitempool, "song")
+        base_search = search.copy()
+        base_search.collect_all(progitempool)
+        fill_restrictive(window, worlds, base_search, song_locations, songitempool)
+        #fill_ownworld_restrictive(window, worlds, search, song_locations, songitempool, progitempool, "song")
         search.collect_locations()
         fill_locations += [location for location in song_locations if location.item is None]
 
